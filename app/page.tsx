@@ -1,5 +1,5 @@
 import pizzas from "@/data";
-import Pizza from "./components/Pizza";
+import Pizza from "./components/pizza/Pizza";
 
 export default function Home() {
   return (
