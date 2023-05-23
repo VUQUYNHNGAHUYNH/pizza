@@ -14,7 +14,7 @@ export type ToppingType = {
 };
 
 const PizzaDetails: React.FC<PizzaProps> = ({ pizza }) => {
-  const [size, setSize] = useState("medium");
+  const [size, setSize] = useState("small");
   const [toppings, setToppings] = useState<ToppingType[]>([]);
   const [toppingPrice, setToppingPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -43,30 +43,30 @@ const PizzaDetails: React.FC<PizzaProps> = ({ pizza }) => {
   }, [toppings]);
 
   return (
-    <div className="flex flex-col lg:flex-row lg:gap-x-8 h-full md:p-8">
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 h-full md:p-8">
       {/* pizza image */}
-      <div className="lg:flex-1 flex items-center justify-center">
+      <div className="lg:flex-1 flex items-center justify-center mt-12 lg:mt-0">
         <Image
           src={pizza.image}
           alt="pizza"
           width={380}
           height={380}
-          className="max-w-[300px] lg:max-w-none z-10 group-hover:translate-y-2 transition-all duration-300"
+          className="max-w-[300px] lg:max-w-none z-10 hover:translate-y-2 transition-all duration-300"
         />
       </div>
       {/* details */}
-      <div className="flex flex-col flex-1 bg-orange-200">
+      <div className="flex flex-col flex-1">
         <div className="flex-1 p-2 text-center lg:text-left">
           <div
-            className="flex-1 bg-white overflow-y-scroll h-[46vh] scrollbar-thin scrollbar-thumb-gray-200 
-          scrollbar-track-gray-300 pr-2"
+            className="flex-1 bg-white overflow-y-scroll h-[46vh] scrollbar-thin scrollbar-thumb-gray-100 
+          scrollbar-track-orange-300 pr-2"
           >
             {/* name */}
-            <h2 className="text-2xl text-center capitalize font-semibold">
+            <h2 className="text-2xl text-center capitalize font-bold mb-4">
               {pizza.name}
             </h2>
             {/* sizes */}
-            <div className="bg-yellow-200 mb-6 text-lg text-center">
+            <div className="mb-4 text-lg text-center font-semibold">
               {size === "small"
                 ? "25 cm"
                 : size === "medium"
@@ -97,11 +97,11 @@ const PizzaDetails: React.FC<PizzaProps> = ({ pizza }) => {
         {/* add to cart icon and price */}
         <div className="h-full flex items-center lg:items-end px-3">
           <button
-            className="py-2 px-3 text-lg w-full text-white rounded-xl font-semibold transition-all hover:opacity-80
+            className="py-2 px-3 text-lg w-full text-white rounded-xl font-semibold transition-all duration-300 hover:opacity-80
        hover:scale-105 bg-gradient-to-r from-[#EC9F05] to-[#FF4E00] flex justify-center gap-x-2"
           >
             <HiOutlineShoppingCart size={24} />
-            <span>Add to cart for</span>
+            <span className="hidden lg:block">Add to cart for</span>
             <span>${(totalPrice + toppingPrice).toFixed(2)}</span>
           </button>
         </div>

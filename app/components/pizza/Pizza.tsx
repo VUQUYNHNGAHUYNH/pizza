@@ -90,7 +90,7 @@ const Pizza: React.FC<PizzaProps> = ({ pizza }) => {
           {/* close modal icon */}
           <div
             onClick={closeModal}
-            className="absolute top-4 right-4 cursor-pointer hover:scale-110 duration-200"
+            className="absolute top-4 left-4 cursor-pointer hover:scale-110 duration-200"
           >
             <IoCloseOutline className="text-4xl text-orange-600 cursor-pointer" />
           </div>
