@@ -4,7 +4,7 @@ const CartMobileIcon = () => {
   return (
     <div
       className="bg-slate-700 w-[55px] h-[55px] rounded-full flex justify-center
-  items-center text-white cursor-pointer fixed right-4 bottom-4 z-20
+  items-center text-white cursor-pointer fixed right-4 bottom-4 z-20 lg:hidden
   "
     >
       <BsHandbagFill className="text-3xl" />
