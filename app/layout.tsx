@@ -7,6 +7,7 @@ import CartMobileIcon from "./components/navbar/CartMobileIcon";
 
 // provider
 import CartProvider from "./context/CartContext";
+import CartMobile from "./components/carts/CartMobile";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({
         <body className={`${quicksand.variable} ${bangers.variable}`}>
           <Navbar />
           <CartMobileIcon />
+          <CartMobile />
           {children}
         </body>
       </html>

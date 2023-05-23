@@ -5,13 +5,14 @@ type CartProviderProps = {
   children: ReactNode;
 }
 
-
 type CartItem = {
     id: number;
     quantity: number;
 }
 
 type CartContextType = {
+    isOpen: boolean;
+    setIsOpen: (isOpen: boolean) => void;
 getItemQuantity: (id: number) => number;
 increaseCartQuantity: (id: number) => void;
 decreaseCartQuantity: (id: number) => void;
@@ -65,7 +66,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
           }
       
     return (
-      <CartContext.Provider value={{ getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart }}>
+      <CartContext.Provider value={{ isOpen,setIsOpen, getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart }}>
         {children}
         </CartContext.Provider>
     )
