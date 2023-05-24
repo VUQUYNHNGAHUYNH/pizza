@@ -18,6 +18,8 @@ type CartContextType = {
   setIsOpen: (isOpen: boolean) => void;
   addToCart: (item: CartItemType) => void;
   cartItems: CartItemType[];
+  increaseAmount: (id: number) => void;
+  decreaseAmount: (id: number) => void;
 };
 
 type CartProviderProps = {
@@ -52,8 +54,40 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     }
   };
 
+  const increaseAmount = (id: number) => {
+    const itemIndex = cartItems.findIndex((item) => item.id === id);
+
+    if (itemIndex !== -1) {
+      const newCart = [...cartItems];
+      newCart[itemIndex].amount += 1;
+      setCartItems(newCart);
+    }
+  };
+
+  const decreaseAmount = (id: number) => {
+    const itemIndex = cartItems.findIndex((item) => item.id === id);
+
+    if (itemIndex !== -1) {
+      const newCart = [...cartItems];
+
+      if (newCart[itemIndex].amount > 1) {
+        newCart[itemIndex].amount -= 1;
+      }
+      setCartItems(newCart);
+    }
+  };
+
   return (
-    <CartContext.Provider value={{ isOpen, setIsOpen, addToCart, cartItems }}>
+    <CartContext.Provider
+      value={{
+        isOpen,
+        setIsOpen,
+        addToCart,
+        cartItems,
+        increaseAmount,
+        decreaseAmount,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

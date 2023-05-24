@@ -1,4 +1,4 @@
-import { CartItemType } from "@/app/context/CartContext";
+import { CartItemType, useCartContext } from "@/app/context/CartContext";
 import Image from "next/image";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import { BsFillTrashFill } from "react-icons/bs";
@@ -8,6 +8,7 @@ type CartItemProps = {
 };
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
+  const { increaseAmount, decreaseAmount } = useCartContext();
   return (
     <div className="select-none">
       <div className=" flex gap-x-6 mb-2">
@@ -23,13 +24,19 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
           </div>
           {/* quantity controls */}
           <div className="flex items-center gap-x-1">
-            <div className="flex justify-center items-center cursor-pointer text-white rounded-full bg-orange-600">
+            <div
+              onClick={() => decreaseAmount(item.id)}
+              className="flex justify-center items-center cursor-pointer text-white rounded-full bg-orange-600"
+            >
               <BiMinus size={20} />
             </div>
             <div className="font-semibold flex flex-1 max-w-[30px] justify-center items-center text-lg">
               {item.amount}
             </div>
-            <div className="flex justify-center items-center cursor-pointer text-white rounded-full bg-orange-600">
+            <div
+              onClick={() => increaseAmount(item.id)}
+              className="flex justify-center items-center cursor-pointer text-white rounded-full bg-orange-600"
+            >
               <BiPlus size={20} />
             </div>
           </div>
