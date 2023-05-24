@@ -8,7 +8,7 @@ type CartItemProps = {
 };
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
-  const { increaseAmount, decreaseAmount } = useCartContext();
+  const { increaseAmount, decreaseAmount, removeItem } = useCartContext();
   return (
     <div className="select-none">
       <div className=" flex gap-x-6 mb-2">
@@ -43,7 +43,10 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
         </div>
         <div className="flex flex-col justify-between items-center">
           {/* remove item */}
-          <div className="flex justify-center items-center self-end cursor-pointer text-orange-500 hover:text-orange-400">
+          <div
+            onClick={() => removeItem(item.id)}
+            className="flex justify-center items-center self-end cursor-pointer text-orange-500 hover:text-orange-400"
+          >
             <BsFillTrashFill size={20} />
           </div>
           {/* price */}

@@ -14,13 +14,13 @@ export type ToppingType = {
   price: number;
 };
 
-const PizzaDetails: React.FC<PizzaProps> = ({ pizza }) => {
+const PizzaDetails: React.FC<PizzaProps> = ({ pizza, setModal }) => {
   const [size, setSize] = useState("small");
   const [toppings, setToppings] = useState<ToppingType[]>([]);
   const [toppingPrice, setToppingPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const { addToCart } = useCartContext();
+  const { addToCart, setIsOpen } = useCartContext();
 
   // handle add to cart
   const handleAddToCart = () => {
@@ -34,6 +34,10 @@ const PizzaDetails: React.FC<PizzaProps> = ({ pizza }) => {
       amount: 1,
     };
     addToCart(item);
+    if (setModal) {
+      setModal(false);
+    }
+    setIsOpen(true);
   };
 
   useEffect(() => {

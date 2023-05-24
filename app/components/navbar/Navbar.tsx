@@ -1,7 +1,10 @@
+"use client";
+
+import { useCartContext } from "@/app/context/CartContext";
 import Image from "next/image";
-import Link from "next/link";
 
 const Navbar = () => {
+  const { itemAmount, setIsOpen, isOpen } = useCartContext();
   return (
     <div className="absolute w-full py-8 mb-12 px-4 font-quicksand">
       <div className=" mx-auto container flex justify-between items-center">
@@ -18,13 +21,16 @@ const Navbar = () => {
         </div>
 
         {/* cart */}
-        <div className="relative cursor-pointer hidden lg:flex">
+        <div
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative cursor-pointer hidden lg:flex"
+        >
           <Image src={"bag.svg"} width={38} height={38} alt="bag" />
           <div
             className="absolute -top-2 left-8 w-6 h-6 rounded-full text-white bg-black flex justify-center
            items-center "
           >
-            4
+            {itemAmount}
           </div>
         </div>
       </div>

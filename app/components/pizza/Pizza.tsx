@@ -20,6 +20,8 @@ export type PizzaProps = {
       price: number;
     }[];
   };
+  modal?: boolean;
+  setModal?: (showModal: boolean) => void;
 };
 
 // bind modal to body
@@ -35,13 +37,13 @@ const modalStyles = {
 
 const Pizza: React.FC<PizzaProps> = ({ pizza }) => {
   // modal state
-  const [showModal, setShowModal] = useState(false);
+  const [modal, setModal] = useState<boolean>(false);
 
   const openModal = () => {
-    setShowModal(true);
+    setModal(true);
   };
   const closeModal = () => {
-    setShowModal(false);
+    setModal(false);
   };
 
   return (
@@ -78,13 +80,13 @@ const Pizza: React.FC<PizzaProps> = ({ pizza }) => {
         </div>
       </div>
       {/* modal */}
-      {showModal && (
+      {modal && (
         <Modal
-          isOpen={showModal}
+          isOpen={modal}
           style={modalStyles}
           onRequestClose={closeModal}
           contentLabel="Pizza Modal"
-          className="bg-white h-full w-full lg:max-w-[900px] lg:max-h-[600px] lg:rounded-3xl lg:shadow-2xl
+          className="bg-white h-full w-full lg:max-w-[1000px] lg:max-h-[800px] lg:rounded-3xl lg:shadow-2xl
            lg:overflow-hidden lg:fixed lg:top-1/2 lg:left-1/2 lg:translate-x-[-50%] lg:translate-y-[-50%] outline-none"
         >
           {/* close modal icon */}
@@ -95,7 +97,7 @@ const Pizza: React.FC<PizzaProps> = ({ pizza }) => {
             <IoCloseOutline className="text-4xl text-orange-600 cursor-pointer" />
           </div>
           {/* pizza details */}
-          <PizzaDetails pizza={pizza} />
+          <PizzaDetails pizza={pizza} modal={modal} setModal={setModal} />
         </Modal>
       )}
     </div>

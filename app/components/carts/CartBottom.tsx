@@ -1,14 +1,14 @@
 import { useCartContext } from "@/app/context/CartContext";
 
 const CartBottom = () => {
-  const { setIsOpen, cartItems } = useCartContext();
+  const { setIsOpen, cartItems, cartTotalPrice } = useCartContext();
   return (
     <div>
       {cartItems.length >= 1 ? (
         <div className="px-6 py-3 mt-auto">
-          <div className="flex items-center justify-between mb-4 text-lg font-semibold">
+          <div className="flex items-center justify-between mb-4 text-xl font-bold">
             <div>Total:</div>
-            <div>320</div>
+            <div>${cartTotalPrice}</div>
           </div>
 
           <div>
