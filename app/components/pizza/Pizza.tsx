@@ -45,7 +45,7 @@ const Pizza: React.FC<PizzaProps> = ({ pizza }) => {
   };
 
   return (
-    <div className="group relative py-16 lg:py-20 cursor-pointer">
+    <div className="group relative py-16 lg:py-20 cursor-pointer font-quicksand">
       <div className="flex items-center justify-center">
         <Image
           onClick={openModal}

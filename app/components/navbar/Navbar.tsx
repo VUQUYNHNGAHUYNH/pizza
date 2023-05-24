@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className="absolute w-full py-8 mb-12 px-4">
+    <div className="absolute w-full py-8 mb-12 px-4 font-quicksand">
       <div className=" mx-auto container flex justify-between items-center">
         <div className="text-5xl font-bangers text-white">PIZZA</div>
         {/* phone */}

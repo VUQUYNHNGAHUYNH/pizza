@@ -1,8 +1,13 @@
+"use client";
+
 import { BsHandbagFill } from "react-icons/bs";
+import { useCartContext } from "@/app/context/CartContext";
 
 const CartMobileIcon = () => {
+  const { isOpen, setIsOpen } = useCartContext();
   return (
     <div
+      onClick={() => setIsOpen(!isOpen)}
       className="bg-slate-700 w-[55px] h-[55px] rounded-full flex justify-center
   items-center text-white cursor-pointer fixed right-4 bottom-4 z-20 lg:hidden
   "

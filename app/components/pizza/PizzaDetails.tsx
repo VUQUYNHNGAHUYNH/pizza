@@ -6,6 +6,7 @@ import { PizzaProps } from "./Pizza";
 import SizeSelection from "./SizeSelection";
 import Topping from "./Topping";
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import { useCartContext } from "@/app/context/CartContext";
 
 export type ToppingType = {
   image: string;
@@ -18,6 +19,22 @@ const PizzaDetails: React.FC<PizzaProps> = ({ pizza }) => {
   const [toppings, setToppings] = useState<ToppingType[]>([]);
   const [toppingPrice, setToppingPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+
+  const { addToCart } = useCartContext();
+
+  // handle add to cart
+  const handleAddToCart = () => {
+    const item = {
+      id: pizza.id,
+      name: pizza.name,
+      image: pizza.image,
+      price: totalPrice,
+      toppings,
+      size,
+      amount: 1,
+    };
+    addToCart(item);
+  };
 
   useEffect(() => {
     size === "small"
@@ -43,7 +60,7 @@ const PizzaDetails: React.FC<PizzaProps> = ({ pizza }) => {
   }, [toppings]);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 h-full md:p-8">
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 h-full md:p-8 font-quicksand">
       {/* pizza image */}
       <div className="lg:flex-1 flex items-center justify-center mt-12 lg:mt-0">
         <Image
@@ -97,6 +114,7 @@ const PizzaDetails: React.FC<PizzaProps> = ({ pizza }) => {
         {/* add to cart icon and price */}
         <div className="h-full flex items-center lg:items-end px-3">
           <button
+            onClick={handleAddToCart}
             className="py-2 px-3 text-lg w-full text-white rounded-xl font-semibold transition-all duration-300 hover:opacity-80
        hover:scale-105 bg-gradient-to-r from-[#EC9F05] to-[#FF4E00] flex justify-center gap-x-2"
           >

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { IoMdCheckmark } from "react-icons/io";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ToppingType } from "./PizzaDetails";
 
 interface ToppingProps {
@@ -18,7 +18,8 @@ const Topping: React.FC<ToppingProps> = ({ item, toppings, setToppings }) => {
   };
 
   // handle toppings
-  const handleToppings = useCallback(() => {
+
+  const handleToppings = () => {
     if (isChecked) {
       // use set to ensure unique values
       const newToppings = new Set([...toppings, { ...item }]);
@@ -31,11 +32,12 @@ const Topping: React.FC<ToppingProps> = ({ item, toppings, setToppings }) => {
       );
       setToppings(newToppings);
     }
-  }, [isChecked, item, toppings, setToppings]);
+  };
 
   useEffect(() => {
     handleToppings();
-  }, [handleToppings]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isChecked]);
 
   return (
     <div

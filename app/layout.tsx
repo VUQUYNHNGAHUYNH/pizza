@@ -4,10 +4,10 @@ import { Quicksand, Bangers } from "next/font/google";
 // components
 import Navbar from "./components/navbar/Navbar";
 import CartMobileIcon from "./components/navbar/CartMobileIcon";
+import CartMobile from "./components/carts/Cart";
 
 // provider
-import CartProvider from "./context/CartContext";
-import CartMobile from "./components/carts/CartMobile";
+import { CartProvider } from "./context/CartContext";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
