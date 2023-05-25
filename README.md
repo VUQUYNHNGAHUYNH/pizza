@@ -1,5 +1,8 @@
 # Front-end Project : Pizza Website - with Next.js 13 App Router: React, Tailwind, Typescript, Context-API
 
+![Pizza website](/pizza1.png)
+![Pizza website](/pizza2.png)
+
 ## Features:
 
 - Tailwind design
