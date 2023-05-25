@@ -8,6 +8,7 @@ import CartMobile from "./components/carts/Cart";
 
 // provider
 import { CartProvider } from "./context/CartContext";
+import Footer from "./components/Footer";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
           <CartMobileIcon />
           <CartMobile />
           {children}
+          <Footer />
         </body>
       </html>
     </CartProvider>
