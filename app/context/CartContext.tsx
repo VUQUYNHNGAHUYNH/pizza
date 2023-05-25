@@ -24,6 +24,7 @@ type CartContextType = {
   setIsOpen: (isOpen: boolean) => void;
   addToCart: (item: CartItemType) => void;
   cartItems: CartItemType[];
+  setCartItems: (cartItems: CartItemType[]) => void;
   increaseAmount: (id: number) => void;
   decreaseAmount: (id: number) => void;
   removeItem: (id: number) => void;
@@ -118,6 +119,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         setIsOpen,
         addToCart,
         cartItems,
+        setCartItems,
         increaseAmount,
         decreaseAmount,
         removeItem,

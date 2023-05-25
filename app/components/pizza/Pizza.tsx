@@ -21,7 +21,7 @@ export type PizzaProps = {
     }[];
   };
   modal?: boolean;
-  setModal?: (showModal: boolean) => void;
+  setModal?: (modal: boolean) => void;
 };
 
 // bind modal to body
